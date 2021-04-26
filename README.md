@@ -5,3 +5,4 @@
 - __20210416__ - arrays, map, reduce, filter, etc.
 - __20210419__ - slice, splice, includes, concat, fill, flat, from, reverse, reduceRight
 - __20210422__ - class
+- __20210426__ - ajax
