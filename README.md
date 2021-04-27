@@ -6,3 +6,4 @@
 - __20210419__ - slice, splice, includes, concat, fill, flat, from, reverse, reduceRight
 - __20210422__ - class
 - __20210426__ - ajax
+- __20210427__ - MVC
