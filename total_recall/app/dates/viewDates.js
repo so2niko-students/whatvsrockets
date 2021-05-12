@@ -1,10 +1,10 @@
 export default class ViewDates{
     btnsAddToFav = '.btn_add_to_fav';
     btnsAddToForm = '.btn_add_to_form';
-    constructor(onClickAddToFavorites, onClickAddToForm){
+    constructor(handleClickAddToFavorites, handleClickAddToForm){
         this.dom = document.querySelector('.dates');
-        this.onClickAddToFavorites = onClickAddToFavorites;
-        this.onClickAddToForm = onClickAddToForm;
+        this.handleClickAddToFavorites = handleClickAddToFavorites;
+        this.handleClickAddToForm = handleClickAddToForm;
     }
 
     render(d){
@@ -45,9 +45,9 @@ export default class ViewDates{
 
     addListeners(){
         [...document.querySelectorAll(this.btnsAddToFav)]
-            .forEach(btn => btn.addEventListener('click', this.onClickAddToFavorites));
+            .forEach(btn => btn.addEventListener('click', this.handleClickAddToFavorites));
 
         [...document.querySelectorAll(this.btnsAddToForm)]
-            .forEach(btn => btn.addEventListener('click', this.onClickAddToForm));
+            .forEach(btn => btn.addEventListener('click', this.handleClickAddToForm));
     }
 }

@@ -17,6 +17,7 @@ export default class modelFavorites{
 
         return this.fav;
     }
+    
     removeById(id){
         this.#fav = this.#fav.filter(date => date.id != id);
         return this.fav;

@@ -4,7 +4,7 @@ import ViewDates from './viewDates.js';
 export default class ControllerDates{
     constructor(Publisher){
         this.model = new ModelDates();
-        this.view = new ViewDates(this.onClickAddToFavorites, this.onClickAddToForm);
+        this.view = new ViewDates(this.handleClickAddToFavorites, this.handleClickAddToForm);
 
         this.load();
         this.publisher = Publisher;
@@ -16,12 +16,12 @@ export default class ControllerDates{
 
     }
 
-    onClickAddToFavorites = ev => {
+    handleClickAddToFavorites = ev => {
         const date = this.getDateByEvent(ev);
         this.publisher.notify('ADD_TO_FAVORITES', date);
     }
 
-    onClickAddToForm = ev => {
+    handleClickAddToForm = ev => {
         const date = this.getDateByEvent(ev);
         this.publisher.notify('ADD_TO_FORM', date);
     }
