@@ -18,6 +18,11 @@ export default class ControllerChange{
 
     handleSubmitChangeName = () => {
         const name = this.view.getName();
-        this.model.updateDate(name);
+        this.updateDate(name);
+    }
+
+    async updateDate(name){
+        await this.model.updateDate(name);
+        this.publisher.notify('TO_RELOAD_DATES');
     }
 }

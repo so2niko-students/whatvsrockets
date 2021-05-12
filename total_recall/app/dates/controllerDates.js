@@ -8,6 +8,7 @@ export default class ControllerDates{
 
         this.load();
         this.publisher = Publisher;
+        this.publisher.subscribe('TO_RELOAD_DATES', this.handleReloadDates);
     }
 
     load(){
@@ -29,5 +30,9 @@ export default class ControllerDates{
     getDateByEvent(ev){
         const id = ev.target.dataset.id;
         return this.model.getDateById(id);
+    }
+
+    handleReloadDates = () => {
+        this.load();
     }
 }
