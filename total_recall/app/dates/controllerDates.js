@@ -9,11 +9,16 @@ export default class ControllerDates{
         this.load();
         this.publisher = Publisher;
         this.publisher.subscribe('TO_RELOAD_DATES', this.handleReloadDates);
+        this.publisher.subscribe('FILTER_BY_DATES', this.handleFilterByDates);
     }
 
     load(){
         this.model.load()
-            .then(d => this.view.render(d));
+            .then(d => {
+                this.view.render(d);
+                const minMaxDates = this.model.findMinMaxDates();    
+                this.publisher.notify('FIND_MIN_MAX_DATES', minMaxDates);
+            });
 
     }
 
@@ -34,5 +39,11 @@ export default class ControllerDates{
 
     handleReloadDates = () => {
         this.load();
+    }
+
+    handleFilterByDates = dates => {
+        console.log(dates);
+        const filteredDates = this.model.filterByDates(dates);
+        this.view.render(filteredDates);
     }
 }

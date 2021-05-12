@@ -27,4 +27,45 @@ export default class ModelDates{
         return JSON.parse(JSON.stringify(d));
     }
 
+    findMinMaxDates(){
+        const { min, max } = this.#data.reduce((acc, el) => {
+            const d = new Date(el.date);
+            if(d < acc.min) acc.min = d;
+            if(d > acc.max) acc.max = d;
+            return acc;
+        },{
+            max : 1,
+            min : Number.MAX_SAFE_INTEGER
+        });
+
+        return {
+            min : this.convertDate(min),
+            max : this.convertDate(max),
+        }
+    }
+
+    convertDate(date){
+        const year = date.getFullYear();
+        const month = this.getLeaderZero(+date.getMonth() + 1);
+        const dateDay = this.getLeaderZero(date.getDate());
+
+        return `${ year }-${ month }-${ dateDay }`;
+    }
+
+    getLeaderZero(d){
+        return d < 10 ? `0${ d }` : d; 
+    }
+
+    filterByDates(dates){
+        const min = new Date(dates.min);
+        const max = new Date(dates.max);
+
+        const filteredDates = this.#data.filter(el => {
+            const d = new Date(el.date);
+            return d > min && d < max;
+        });
+
+        return filteredDates;
+    }
+
 }
