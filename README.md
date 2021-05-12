@@ -7,3 +7,6 @@
 - __20210422__ - class
 - __20210426__ - ajax
 - __20210427__ - MVC
+- __20210511__ - MVC with Publisher 
+
+    (_Total Recall_ - https://so2niko.github.io/whatvsrockets/total_recall/)
