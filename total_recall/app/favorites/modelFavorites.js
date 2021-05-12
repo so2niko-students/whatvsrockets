@@ -15,11 +15,17 @@ export default class modelFavorites{
             this.#fav.push(data);
         }
 
+        this.writeToLS();
+
         return this.fav;
     }
     
     removeById(id){
         this.#fav = this.#fav.filter(date => date.id != id);
         return this.fav;
+    }
+
+    writeToLS(){
+        localStorage.setItem('favorites', JSON.stringify(this.#fav));
     }
 }
